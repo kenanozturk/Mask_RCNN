@@ -1,3 +1,5 @@
 datasets/
 datasets/balloon/
 datasets/wire/
+datasets/wire/train/
+datasets/wire/val/
