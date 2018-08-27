@@ -5,6 +5,10 @@ results/
 temp/
 test/
 
+# wire data
+datasets/wires/
+datasets/wire
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
