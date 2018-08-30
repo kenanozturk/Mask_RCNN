@@ -68,7 +68,7 @@ class WireConfig(Config):
     # We use a GPU with 12GB memory, which can fit two images.
     # Adjust down if you use a smaller GPU.
     # TODO check the memory of the ASMPT workstation
-    IMAGES_PER_GPU = 2
+    IMAGES_PER_GPU = 1
 
     # Uncomment to train on 8 GPUs (default is 1)
     # TODO later try to adjust this to 2 to take advantage of 2 GPUs at ASMPT
@@ -89,6 +89,13 @@ class WireConfig(Config):
 
     # Number of epochs
     EPOCHS = 30
+
+    # Length of square anchor side in pixels
+    RPN_ANCHOR_SCALES = (32, 64, 128)
+
+    # Ratios of anchors at each cell (width/height)
+    # A value of 1 represents a square anchor, and 0.5 is a wide anchor
+    RPN_ANCHOR_RATIOS = [0.25, 0.5, 1, 2, 4]
 
 
 ############################################################
