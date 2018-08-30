@@ -88,14 +88,15 @@ class WireConfig(Config):
     DETECTION_MIN_CONFIDENCE = 0.9
 
     # Number of epochs
-    EPOCHS = 30
+    # TODO implement this config into code
+    # EPOCHS = 30
 
     # Length of square anchor side in pixels
     RPN_ANCHOR_SCALES = (32, 64, 128)
 
     # Ratios of anchors at each cell (width/height)
     # A value of 1 represents a square anchor, and 0.5 is a wide anchor
-    RPN_ANCHOR_RATIOS = [0.25, 0.5, 1, 2, 4]
+    RPN_ANCHOR_RATIOS = [0.25, 1, 4]
 
 
 ############################################################
@@ -213,7 +214,7 @@ def train(model):
     print("Training network heads")
     model.train(dataset_train, dataset_val,
                 learning_rate=config.LEARNING_RATE,
-                epochs=EPOCHS,
+                epochs=30,
                 layers='heads')
 
 
