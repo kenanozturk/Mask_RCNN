@@ -87,6 +87,9 @@ class WireConfig(Config):
     # Skip detections with < 90% confidence
     DETECTION_MIN_CONFIDENCE = 0.9
 
+    # TODO Number of epochs
+    # EPOCHS=20
+
 
 ############################################################
 #  Dataset
