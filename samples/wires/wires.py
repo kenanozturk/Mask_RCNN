@@ -92,12 +92,14 @@ class WireConfig(Config):
     # EPOCHS = 30
 
     # Length of square anchor side in pixels
-    RPN_ANCHOR_SCALES = (32, 64, 128)
+    RPN_ANCHOR_SCALES = (16, 32, 64, 128)
 
     # Ratios of anchors at each cell (width/height)
     # A value of 1 represents a square anchor, and 0.5 is a wide anchor
     RPN_ANCHOR_RATIOS = [0.25, 1, 4]
 
+    # Image mean (RGB)
+    MEAN_PIXEL = np.array([53, 54, 56])
 
 ############################################################
 #  Dataset
