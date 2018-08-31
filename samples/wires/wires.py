@@ -1,8 +1,4 @@
 """
-Adaptations made by Kenan Ozturk for ASMPT Internship Project from balloon.py
-"""
-
-"""
 Mask R-CNN
 Train on the toy Balloon dataset and implement color splash effect.
 
