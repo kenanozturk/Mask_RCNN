@@ -71,8 +71,8 @@ class WireConfig(Config):
     # GPU_COUNT = 8
 
     # TODO check if these needs to be changed either for starting the training or exploiting high res pics
-    # IMAGE_MIN_DIM = 800
-    # IMAGE_MAX_DIM = 1024
+    IMAGE_MIN_DIM = 1024
+    IMAGE_MAX_DIM = 1024
 
     # Number of classes (including background)
     NUM_CLASSES = 1 + 1  # Background + wire
@@ -88,14 +88,16 @@ class WireConfig(Config):
     # EPOCHS = 30
 
     # Length of square anchor side in pixels
-    RPN_ANCHOR_SCALES = (16, 32, 64, 128)
+    RPN_ANCHOR_SCALES = (16, 32, 64, 128, 256)
 
     # Ratios of anchors at each cell (width/height)
     # A value of 1 represents a square anchor, and 0.5 is a wide anchor
     RPN_ANCHOR_RATIOS = [0.25, 1, 4]
 
     # Image mean (RGB)
-    MEAN_PIXEL = np.array([53, 54, 56])
+    MEAN_PIXEL = np.array([53., 54., 56.])
+
+    BACKBONE = 'resnet50'
 
 ############################################################
 #  Dataset
@@ -213,7 +215,18 @@ def train(model):
     model.train(dataset_train, dataset_val,
                 learning_rate=config.LEARNING_RATE,
                 epochs=30,
-                layers='heads')
+                layers='heads'
+                # augmentation=imgaug.Sometimes(2/3,aug.OneOf(
+                #                             [
+                #                             imgaug.augmenters.Fliplr(1),
+                #                             imgaug.augmenters.Flipud(1),
+                #                             imgaug.augmenters.Affine(rotate=(-45, 45)),
+                #                             imgaug.augmenters.Affine(rotate=(-90, 90)),
+                #                             imgaug.augmenters.Affine(shear=(-45, 45),
+                #                             imgaug.augmenters.Multiply(0.5, 1,5))
+                #                              ]
+                #                         )
+                                   )
 
 
 def color_splash(image, mask):
